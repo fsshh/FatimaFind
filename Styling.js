@@ -35,26 +35,15 @@ export const styles = StyleSheet.create({
       color: 'white',
       fontSize: 20,
       fontWeight: "500",
-      // marginHorizontal: 15,
+
     },
 
     topbarTextContainer:{
         width: 80,
         height: '100%',
-        // backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    // topbarNavText:{
-    //   height: '100%',
-    //   display: 'flex',
-    //   flexDirection: 'row',
-      
-    //   // backgroundColor: 'blue',
-
-    //   justifyContent: 'space-between',
-    //   alignItems: 'center'
-    // },
   });
 
 
@@ -126,10 +115,7 @@ export const findStyles = StyleSheet.create({
  findPage_Body:{
     width: "50%",
     height: "100%",
-    backgroundColor: "#2ECC7180",
-
-    marginTop: 48.5,
-    // paddingLeft: 15,
+    backgroundColor: "#308E5B",
   },
 
  findContent_section:{
@@ -163,3 +149,12 @@ export const findStyles = StyleSheet.create({
     gap: 10,
   },
 });
+
+export const mapsStyles = StyleSheet.create({
+  mapsPage_body:{
+    width: "100%",
+    height: "100%",
+    marginTop: 48.5,
+    backgroundColor: "#2ECC7180",
+  },
+})

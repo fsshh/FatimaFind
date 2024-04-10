@@ -4,15 +4,17 @@ import { useSelector, useDispatch} from 'react-redux';
 import {styles} from './Styling';
 import {About} from './topbarContents/About';
 import {Help} from './topbarContents/Help';
-import {Find} from './topbarContents/Find';
+import { Maps } from './topbarContents/Maps';
 
 import {
     toggleAboutOn,
     toggleAboutOff,
     toggleHelpOn,
     toggleHelpOff,
-    toggleFindOn,
-    toggleFindOff
+    toggleFindOff,
+    toggleFindSwitch,
+    toggleMapOn,
+    toggleMapOff
 } from './redux/redux';
 
 'use client'
@@ -20,15 +22,17 @@ const MyApp = () => {
     const dispatch = useDispatch();
     const aboutToggled = useSelector((state) => state.toggled.isAboutToggled);
     const helpToggled = useSelector((state) => state.toggled.isHelpToggled);
-    const findToggled = useSelector((state) => state.toggled.isFindToggled);
+    const mapToggled = useSelector((state) => state.toggled.isMapToggled);
 
-    const toggleHomePage = () =>{
+    const toggleMapPage = () =>{
+        dispatch(toggleMapOn());
         dispatch(toggleFindOff());
         dispatch(toggleAboutOff());
         dispatch(toggleHelpOff());
     }
     const toggleFindPage = () =>{
-        dispatch(toggleFindOn());
+        dispatch(toggleFindSwitch());
+        dispatch(toggleMapOn());
         dispatch(toggleAboutOff());
         dispatch(toggleHelpOff());
     }
@@ -36,18 +40,20 @@ const MyApp = () => {
         dispatch(toggleHelpOn());
         dispatch(toggleAboutOff());
         dispatch(toggleFindOff());
+        dispatch(toggleMapOff());
     }
     const toggleAboutPage = () =>{
         dispatch(toggleAboutOn());
         dispatch(toggleHelpOff());
         dispatch(toggleFindOff());
+        dispatch(toggleMapOff());
     }
     
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
             <View style={styles.container}>
                 <View style={styles.topbar}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         onPress={() => {
                             {toggleFindPage()}
                         }} 
@@ -56,7 +62,7 @@ const MyApp = () => {
                     </TouchableOpacity>
                     <TouchableOpacity 
                         onPress={() => {
-                            {toggleHomePage()}
+                            {toggleMapPage()}
                         }} 
                         style={styles.topbarTextContainer}>
                         <Text style={styles.topbar_text}>Map</Text>
@@ -76,7 +82,7 @@ const MyApp = () => {
                         <Text style={styles.topbar_text}>About</Text>
                     </TouchableOpacity>       
                 </View>
-                <View style={[{display: findToggled ? '' : 'none'}]}><Find/></View>
+                <View style={[{display: mapToggled ? '' : 'none'}]}><Maps/></View>
                 <View style={[{display: aboutToggled ? '' : 'none'}]}><About/></View>
                 <View style={[{display: helpToggled ? '' : 'none'}]}><Help/></View>
             </View>

@@ -17,14 +17,32 @@
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
+       "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyA2hsxwSV8c99djzzBE4Xyu4dKE4ISBHEI"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dexterlogdonio24.expo_fatimafindapp_v1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "066b4905-7eb4-4b2d-ab11-4d82ab2af6f5"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/066b4905-7eb4-4b2d-ab11-4d82ab2af6f5"
     }
   }
 }

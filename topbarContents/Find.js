@@ -1,10 +1,10 @@
 import {Text, View, TouchableOpacity} from 'react-native';
 import { findStyles } from '../Styling';
-import { Marker, MarkerAnimated } from 'react-native-maps';
 
 import {useSelector, useDispatch} from 'react-redux'
 import { changeMarkerData } from '../redux/redux';
 
+import { toggleFindOff } from '../redux/redux';
 // MARKER DATA FILES
 
 import { atm_markers, parking_markers, 
@@ -13,12 +13,20 @@ import { atm_markers, parking_markers,
     schoolSupplies_marker, schoolBuildings_marker, 
     foodStalls_marker, convenienceStore_marker, 
     emptyMarker} from '../mapMarkers.js'
+import { MarkerAnimated } from 'react-native-maps';
 
 
 export let markerIsToggled = false;
 
 export function Find(){
     const dispatch = useDispatch()
+
+    let activateMarker = (marker_name) =>{
+        dispatch(changeMarkerData(marker_name));
+        markerIsToggled = true;
+        dispatch(toggleFindOff());
+    }
+    
     return(
         <View style={findStyles.findPage_Body}>
             <View style={findStyles.findContent_section}>
@@ -26,68 +34,57 @@ export function Find(){
                 <View style={findStyles.findContent_container}>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(atm_markers));
-                            markerIsToggled = true;
+                            activateMarker(atm_markers);
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>ATM</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(parking_markers));
-                            markerIsToggled = true;
+                            activateMarker(parking_markers)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Parking</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(hardware_markers));
-                            markerIsToggled = true;
+                            activateMarker(hardware_markers)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Hardware</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(riceMeals_marker));
-                            markerIsToggled = true;
+                            activateMarker(riceMeals_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Rice Meals</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(printXerox_marker));
-                            markerIsToggled = true;
+                            activateMarker(printXerox_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Print/Xerox</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(sariStore_marker));
-                            markerIsToggled = true;
+                            activateMarker(sariStore_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Sari-sari Store</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(schoolSupplies_marker));
-                            markerIsToggled = true;
+                            activateMarker(schoolSupplies_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>School Supplies</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(schoolBuildings_marker));
-                            markerIsToggled = true;
+                            activateMarker(schoolBuildings_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>School Buildings</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(foodStalls_marker));
-                            markerIsToggled = true;
+                            activateMarker(foodStalls_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Food Snack Stalls</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            dispatch(changeMarkerData(convenienceStore_marker));
-                            markerIsToggled = true;
+                            activateMarker(convenienceStore_marker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Convenience Store</Text></TouchableOpacity>
                     <TouchableOpacity
                         onPress={() =>{
-                            markerIsToggled = true;
-                            dispatch(changeMarkerData(emptyMarker));
+                            activateMarker(emptyMarker)
                         }}>
                         <Text style={{color: 'white', fontSize: 20}}>Clear Marker</Text></TouchableOpacity>
                 </View>

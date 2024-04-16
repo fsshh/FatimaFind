@@ -82,6 +82,7 @@ const MyApp = () => {
                         <Text style={styles.topbar_text}>About</Text>
                     </TouchableOpacity>       
                 </View>
+                {/* TOGGLES THE PAGE WHEN THE CORRESPONDING TEXT IS CLICKED */}
                 <View style={[{display: mapToggled ? '' : 'none'}]}><Maps/></View>
                 <View style={[{display: aboutToggled ? '' : 'none'}]}><About/></View>
                 <View style={[{display: helpToggled ? '' : 'none'}]}><Help/></View>
